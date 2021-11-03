@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<!-- id, class操作 ------------------------------>
+	id操作<br>
+	<ul>
+		<li id="id01">値1</li>
+		<li id="id02">値1</li>
+		<li id="id03">値1</li>
+		<hr>
+		class操作<br>
+		<li id="id11" class="class01">値1</li>
+		<li id="id12" class="class01">値1</li>
+		<li id="id13" class="class01">値1</li>
+	</ul>
+	<hr>
+	<script>
+		// 指定したidに値を渡す
+		document.getElementById('id01').innerHTML = "<font color = 'red'>JSから変更</font>";
+		document.getElementById('id03').innerHTML = "<font color = 'red'>JSから変更</font>";
+
+		// 指定したクラスに値を渡す
+		let classes = document.getElementsByClassName('class01');
+		for (var i = 0; i < classes.length; i++) {
+			classes[i].innerHTML = "<font color = 'blue'>JSから入力(class)" + (i + 1) + "</font>";
+		}
+	</script>
+
+	<!-- タグ操作 ---------------------------------------->
+	<dl>
+		<dt>項目1</dt>
+		<dd>値1</dd>
+		<dt>項目2</dt>
+		<dd>値2</dd>
+	</dl>
+	<dl id='dl01'>
+		<dt>項目</dt>
+		<dd>値</dd>
+	</dl>
+	<script>
+		let tags = document.getElementsByTagName('dt');
+		for (let i = 0; i < tags.length; i++) {
+			tags[i].innerHTML = "<font color='green'>JSから入力(tag)" + i + "</font>";
+		}
+		tags2 = document.getElementById('dl01').getElementsByTagName('dd');
+		for (let i = 0; i < tags2.length; i++) {
+			tags2[i].innerHTML = "<font color='purple'>JSから入力(tag2)" + i + "</font>";
+		}
+	</script>
+
+</html>

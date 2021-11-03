@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<title>BMI計算</title>
+	<script>
+		function calcBmi() {
+
+			// 身長と体重を取得
+			let weight = parseFloat(document.getElementById("weight").value);
+			let height = parseFloat(document.getElementById("height").value);
+
+			// bmiを計算
+			let bmi = weight * (Math.pow(height / 100), 2);
+
+			// BMI指数から体型を判定
+			let bodyType;
+			if (bmi < 18.5) {
+				bodyType = "痩せ型";
+			} else if (bmi < 25) {
+				bodyType = "普通";
+			} else {
+				bodyType = "肥満";
+			}
+			console.log("BMI指数： " + bmi);
+			console.log("体型： " + bodyType);
+
+		}
+	</script>
+</head>
+
+<body>
+	<p>BMI計算</p>
+	<form>
+		<p>身長：<input type="text" id="height"></p>
+		<p>体重：<input type="text" id="weight"></p>
+		<input type="submit" value="計算" onclick="calcBmi()">
+	</form>
+
+</body>
+
+</html>

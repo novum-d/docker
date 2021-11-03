@@ -1,0 +1,54 @@
+version: '3'
+services:
+  
+  #nginx
+  web:
+    image: nginx:1.13.5-alpine
+    ports:
+      - 80:80
+    depends_on:
+      - app
+    links:
+      - db:app
+    volumes:
+      - ./web/default.conf:/etc/nginx/conf.d/default.conf
+      - ./data/htdocs:/var/www/html
+  
+  #php
+  app:
+    build: ./app
+    env_file: .env
+    depends_on:
+      - db
+    network_mode: service:db
+    volumes:
+      - ./data/htdocs:/var/www/html
+      - ./php.ini:/etc/php.ini
+
+  #mysql
+  db:
+     build: ./db
+     env_file: .env
+     volumes:
+      #データベースの情報を格納している場所でデータボリュームを作成する
+       - db-data:/var/lib/mysql
+       #mysql設定ファイルのマウント
+       - ./my.cnf:/etc/mysql/my.cnf
+     ports:
+       - 3306:3306
+     restart: always
+  
+  #phpMyAdimin
+  pma:
+    image: phpmyadmin/phpmyadmin
+    environment: 
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=
+    ports: 
+      - 8080:80
+    depends_on: 
+      - db
+    restart: always
+volumes: 
+  db-data:

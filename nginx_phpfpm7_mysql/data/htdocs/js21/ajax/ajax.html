@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<title>BMI計算</title>
+</head>
+
+<body>
+	<script src="../js/jquery-3.5.1.min.js"></script>
+	<script>
+		function callback(){
+			console.log("関数宣言のやつ");
+		}
+
+		// XMLHttpRequest
+		const jqXHR = $.ajax({ // Ajax ← Asynchronous JavaScript XML
+			url:'https://apis.postcode-jp.com/api/v3/postcodes?postcode=7830060',
+			type:'GET'
+		});
+		jqXHR.always(callback);
+		jqXHR.always(function(ret,textStatus,obj){
+			console.log(ret);
+			console.log(textStatus);
+			console.log(obj);
+
+			if(textStatus === 'success') {
+				console.log(ret);
+			}
+			if(textStatus === 'error') {
+				console.log('faild');
+			}
+		});
+	</script>
+</body>
+
+</html>

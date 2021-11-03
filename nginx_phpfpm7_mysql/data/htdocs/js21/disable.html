@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<input type="text" id="bt1" name="sample">
+	<input type="button" value="活性/非活性" onclick="clickBtn()">
+
+	<script>
+		function clickBtn() {
+			// エレメントが非活性のとき
+			if (document.getElementById("bt1").disabled === true) {
+				// 活性
+				document.getElementById("bt1").removeAttribute("disabled");
+			} else {
+				// 非活性
+				document.getElementById("bt1").setAttribute("disabled", true);
+			}
+		}
+	</script>
+</body>
+
+</html>

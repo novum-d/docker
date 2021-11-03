@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>バリデーション</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="mt-5 mb-5 w-25" style="margin:0 auto;">
+        <p class="h2">validate</p>
+        <form action="" method="post" id="form">
+            <p>氏名: <input type="text" class="form-control" name="name" size="20" id="name"></p>
+            <p>年齢: <input type="text" class="form-control" name="age" size="20" id="age"></p>
+            <p class="mt-5">メールアドレス: <input type="text" class="form-control" name="email" size="20" id="email"></p>
+            <p>メールアドレス（確認）: <input type="text" class="form-control" name="confirmEmail" size="20" id="confirmEmail"></p>
+            <label id="radio_err"></label><br>
+            <p class="mt-5">性別：</p>
+            <div class="d-flex justify-content-around" id="radio-after">
+                <div class="custom-control custom-radio">
+                    <input type="radio" name="radio" id="radio1" class="custom-control-input">
+                    <label class="custom-control-label" for="radio1">男性</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" name="radio" id="radio2" class="custom-control-input">
+                    <label class="custom-control-label" for="radio2"">女性</label>
+                </div>
+            </div>
+            <p class=" mt-5">アンケート１：<br>　この世から無くなって一番困るのは？</p>
+                        <select name="select" size="6" multiple class="custom-select" id="select">
+                            <option value="HAL大阪19階にある球体">HAL大阪19階にある球体</option>
+                            <option value="谷まさる">谷まさる</option>
+                            <option value="VOICE(Voice Of Student)">VOICE(Voice Of Student)</option>
+                            <option value="自己強育の言説">自己強育の言説</option>
+                            <option value="たにま猿">たにま猿</option>
+                        </select>
+                        <p class="mt-5">アンケート２：" 1 " + " 1 "は？</p>
+                        <div class="d-flex justify-content-around" id="checkbox">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="check1" name="checkbox">
+                                <label class="custom-control-label" for="check1">" 11 "</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="check2" name="checkbox">
+                                <label class="custom-control-label" for="check2">田んぼの田</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="check3" name="checkbox">
+                                <label class="custom-control-label" for="check3">2</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="check4" name="checkbox">
+                                <label class="custom-control-label" for="check4">ポッキー</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="check5" name="checkbox">
+                                <label class="custom-control-label" for="check5">○○○</label>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button type="submit" class="w-50 btn btn-primary">実行</button>
+                        </div>
+        </form>
+    </div>
+
+    <script src="./js/jquery-3.5.1.min.js"></script>
+    <script src="./js/jquery.validate.min.js"></script>
+    <script>
+
+        $(function () {
+            $('#form').validate({
+                errorElement: 'label',
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    age: {
+                        required: true,
+                        range: [10, 30]
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    confirmEmail: {
+                        required: true,
+                        email: true,
+                        equalTo: "input[name=email]"
+                    },
+                    radio: {
+                        required: true
+                    },
+                    select: {
+                        required: true,
+                        minlength: 3
+                    },
+                    checkbox: {
+                        required: true,
+                        minlength: 2
+                    }
+
+                },
+                messages: {
+                    name: {
+                        required: "　必須項目です!"
+                    },
+                    age: {
+                        required: "　必須項目です!",
+                        number: "　整数値を入力してください！",
+                        range: "　10 ~ 30歳の年齢を入力してください！"
+                    },
+                    email: {
+                        required: "　必須項目です!",
+                        email: "　メールアドレス形式で入力してください！"
+                    },
+                    confirmEmail: {
+                        required: "　必須項目です!",
+                        email: "　メールアドレス形式で入力してください！",
+                        equalTo: "　メールアドレスが一致していません！"
+                    },
+                    radio: {
+                        required: "　必須項目です!"
+                    },
+                    select: {
+                        required: "　必須項目です！",
+                        minlength: "3つ以上選択してください！"
+                    },
+                    checkbox: {
+                        required: "　必須項目です！",
+                        minlength: "2つ以上選択してください！"
+                    }
+                },
+                errorPlacement: function (error, element) {
+                    if (element.attr("name") == "name") {
+                        error.insertAfter("#name");
+                    }
+                    if (element.attr("name") == "age") {
+                        error.insertAfter("#age");
+                    }
+                    if (element.attr("name") == "email") {
+                        error.insertAfter("#email");
+                    }
+                    if (element.attr("name") == "select") {
+                        error.insertAfter("#select");
+                    }
+                    if (element.attr("name") == "confirmEmail") {
+                        error.insertAfter("#confirmEmail");
+                    }
+                    if (element.attr("name") == "radio") {
+                        error.insertAfter("#radio-after");
+                    }
+                    if (element.attr("name") == "checkbox") {
+                        error.insertAfter("#checkbox");
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

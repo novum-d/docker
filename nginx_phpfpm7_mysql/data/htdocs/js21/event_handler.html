@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<title>イベントハンドラ</title>
+	<script>
+		function unko() {
+			let num;
+			num = document.getElementById("left").value;
+			num = parseFloat(num);
+			let num1 = parseFloat(document.getElementById("left").value);
+			let num2 = parseFloat(document.getElementById("right").value);
+			let ans = num1 + num2;
+			console.log(ans);
+		}
+	</script>
+</head>
+
+<body>
+	<p>２つの値を計算</p>
+	<form name="excute">
+		<input type="text" name="left" id="left">
+		　<input type="text" name="right" id="right"><br>
+		<input type="submit" name="btn" value="button" onclick="unko()">
+	</form>
+
+</body>
+
+</html>
