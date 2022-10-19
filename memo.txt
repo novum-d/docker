@@ -1,0 +1,1 @@
+docker run --network host --cap-add SYS_ADMIN --security-opt apparmor:unconfined -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro local/c7-systemd-httpd
