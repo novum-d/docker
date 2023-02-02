@@ -23,7 +23,7 @@ config :ph_azure_app, PhAzureAppWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "SRDR6YD5qXKwGWlIkhGeXn3UTadJhvXSGnv3lZdgZjBHA85k4+M2xp/kJjZzWh6h",
+  secret_key_base: "QcokIZuH8v0ZQYTFuVAHlUWlxoAcBCoCv362BfcfsUsTTihnV5Qvi8ZYqGoWZBzP",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}

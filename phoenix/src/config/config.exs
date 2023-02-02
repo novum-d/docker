@@ -18,7 +18,7 @@ config :ph_azure_app, PhAzureAppWeb.Endpoint,
     layout: false
   ],
   pubsub_server: PhAzureApp.PubSub,
-  live_view: [signing_salt: "rQdwzHF6"]
+  live_view: [signing_salt: "NXxCkbMJ"]
 
 # Configures the mailer
 #

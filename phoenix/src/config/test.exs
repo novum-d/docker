@@ -17,7 +17,7 @@ config :ph_azure_app, PhAzureApp.Repo,
 # you can enable the server option below.
 config :ph_azure_app, PhAzureAppWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "Cl+K2drrZg0Ej7EwS0Q4Sdulnyhnfdt1Wuk7ONOhYM/Fx+STZuvy1CQMeR4exFzH",
+  secret_key_base: "jHmGViGKKrC2XSvqCEVSnRpZz6OE7FhaDBGEk1+celdKVqKeTQf6atwFqUYpX45C",
   server: false
 
 # In test we don't send emails.
