@@ -1,27 +1,15 @@
 import Config
 
-# Configure your database
-#
-# The MIX_TEST_PARTITION environment variable can be used
-# to provide built-in test partitioning in CI environment.
-# Run `mix help test` for more information.
-config :ph_azure_app, PhAzureApp.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "ph_azure_app_test#{System.get_env("MIX_TEST_PARTITION")}",
-  pool: Ecto.Adapters.SQL.Sandbox,
-  pool_size: 10
-
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :ph_azure_app, PhAzureAppWeb.Endpoint,
+config :app, AppWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "jHmGViGKKrC2XSvqCEVSnRpZz6OE7FhaDBGEk1+celdKVqKeTQf6atwFqUYpX45C",
+  secret_key_base: "fe1FscyQ8Hxc4FlwZRf7f9xSe09Cuvi0tjHPPBH6YnpwYdnadyIGq3TkqCX4yiOr",
   server: false
 
 # In test we don't send emails.
-config :ph_azure_app, PhAzureApp.Mailer, adapter: Swoosh.Adapters.Test
+config :app, App.Mailer,
+  adapter: Swoosh.Adapters.Test
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false

@@ -1,4 +1,4 @@
-# PhAzureApp
+# App
 
 To start your Phoenix server:
 

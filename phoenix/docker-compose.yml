@@ -1,10 +1,23 @@
 version: "3"
 
 services:
-  phoenix:
-    build: .
+  phx:
+    image: elixir:latest
+    command: >
+      bash -c "apt-get update
+      && apt-get install -y postgresql-client inotify-tools
+      && mix local.hex --force
+      && mix local.rebar --force
+      && mix archive.install hex phx_new 1.7.0-rc.2 --force
+      && echo y | mix phx.new . --no-ecto
+      && mix setup
+      && mix phx.server"
+    environment:
+      APP_HOME: /app
+    working_dir: /app
     volumes:
       - ./src:/app
+      - ./config/dev.exs:/app/config/dev.exs
     ports:
       - "4000:4000"
     depends_on:

@@ -7,18 +7,15 @@
 # General application configuration
 import Config
 
-config :ph_azure_app,
-  ecto_repos: [PhAzureApp.Repo]
-
 # Configures the endpoint
-config :ph_azure_app, PhAzureAppWeb.Endpoint,
+config :app, AppWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [
-    formats: [html: PhAzureAppWeb.ErrorHTML, json: PhAzureAppWeb.ErrorJSON],
+    formats: [html: AppWeb.ErrorHTML, json: AppWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: PhAzureApp.PubSub,
-  live_view: [signing_salt: "NXxCkbMJ"]
+  pubsub_server: App.PubSub,
+  live_view: [signing_salt: "Fg1gNISi"]
 
 # Configures the mailer
 #
@@ -27,7 +24,7 @@ config :ph_azure_app, PhAzureAppWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :ph_azure_app, PhAzureApp.Mailer, adapter: Swoosh.Adapters.Local
+config :app, App.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,
