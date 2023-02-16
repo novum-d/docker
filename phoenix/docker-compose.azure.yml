@@ -17,14 +17,14 @@ services:
       APP_HOME: /app
     working_dir: /app
     volumes:
-      - ./src:/app
-      - ./config/dev.exs:/app/config/dev.exs
+      - ${WEBAPP_STORAGE_HOME}/src:/app
+      - ${WEBAPP_STORAGE_HOME}/config/dev.exs:/app/config/dev.exs
     ports:
       - "80:80"
     restart: always
     depends_on:
       - db
-  db:
+  db-pg:
     image: phregi.azurecr.io/db-pg:latest
     container_name: db-pg
     environment:
@@ -33,4 +33,4 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     restart: always
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - ${WEBAPP_STORAGE_HOME}/pgdata:/var/lib/postgresql/data
