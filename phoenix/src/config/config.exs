@@ -15,7 +15,7 @@ config :app, AppWeb.Endpoint,
     layout: false
   ],
   pubsub_server: App.PubSub,
-  live_view: [signing_salt: "Fg1gNISi"]
+  live_view: [signing_salt: "rKVe7jOU"]
 
 # Configures the mailer
 #

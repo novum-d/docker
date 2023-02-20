@@ -2,11 +2,10 @@ version: "3"
 
 services:
   app-phx:
-    image: phregi.azurecr.io/app-phx:latest
+    image: elixir:1.14.3-alpine
     container_name: app-phx
     command: >
-      bash -c "apt-get update
-      && apt-get install -y postgresql-client inotify-tools
+      sh -c "apk --no-cache add postgresql-client inotify-tools
       && mix local.hex --force
       && mix local.rebar --force
       && mix archive.install hex phx_new 1.7.0-rc.2 --force
@@ -20,17 +19,21 @@ services:
       - ./src:/app
       - ./config/dev.exs:/app/config/dev.exs
     ports:
-      - "80:80"
+      - 80:80
     restart: always
     depends_on:
       - db
   db:
-    image: phregi.azurecr.io/db-pg:latest
+    image: postgres:15.2-alpine
     container_name: db-pg
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       PGDATA: /var/lib/postgresql/data/pgdata
     restart: always
+    ports:
+      - 5432:5432
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

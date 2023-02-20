@@ -4,7 +4,7 @@ import Config
 # you can enable the server option below.
 config :app, AppWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "fe1FscyQ8Hxc4FlwZRf7f9xSe09Cuvi0tjHPPBH6YnpwYdnadyIGq3TkqCX4yiOr",
+  secret_key_base: "yjhoUoFk9meiTZFaVdP+z+erbvB5ofpc4YtIGJGyhPdkK+Ub5KR16YgOWF+k5lxU",
   server: false
 
 # In test we don't send emails.
